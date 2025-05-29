@@ -17,12 +17,16 @@ jobs:
       uses: webfactory/ssh-agent@v0.9.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-    - name: Deploy to Ubuntu server
+    - name: Deploy via SSH with fallback
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          cd /var/www/html/myapp
-          pwd
-          ls
-          git pull origin main
-          # Optional: Clear cache, restart services, etc.
+          if [ ! -d "/var/www/html/myapp/.git" ]; then
+            echo "Cloning repo as it doesn't exist"
+            rm -rf /var/www/html/myapp
+            git clone git@github.com:your-username/your-repo.git /var/www/html/myapp
+          else
+            echo "Repo exists, pulling latest changes"
+            cd /var/www/html/myapp
+            git pull origin main
+          fi
         EOF
