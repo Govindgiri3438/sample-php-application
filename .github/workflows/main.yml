@@ -26,7 +26,7 @@ jobs:
             git clone git@github.com:Govindgiri3438/sample-php-application.git /var/www/html/myapp
           else
             echo "Repo exists, pulling latest changes"
-            cd /var/www/html/myapp
+            cd /var/www/html/
             git pull origin main
           fi
         EOF
