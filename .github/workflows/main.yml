@@ -22,8 +22,8 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
           if [ ! -d "/var/www/html/.git" ]; then
             echo "Cloning repo as it doesn't exist"
-            rm -rf /var/www/html/myapp
-            git clone git@github.com:Govindgiri3438/sample-php-application.git /var/www/html/myapp
+            rm -rf /var/www/html/
+            git clone git@github.com:Govindgiri3438/sample-php-application.git /var/www/html/
           else
             echo "Repo exists, pulling latest changes"
             cd /var/www/html/
