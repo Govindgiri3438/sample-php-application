@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # Deploy only when pushing to main
+    paths-ignore:
+      - 'upload/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
