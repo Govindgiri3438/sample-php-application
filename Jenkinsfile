@@ -5,13 +5,15 @@ pipeline {
         DEPLOY_USER = 'ubuntu' // or another SSH user
         DEPLOY_HOST = '3.6.36.20'
         DEPLOY_PATH = '/var/www/html/'
-        SSH_CREDENTIALS_ID = 'my-jenkins-ssh-id'
+        SSH_CREDENTIALS_ID = 'my-jenkins-ssh'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
                 git url: 'https://github.com/Govindgiri3438/sample-php-application.git', branch: 'main'
+                git url: 'https://github.com/youruser/yourrepo.git', branch: 'main', credentialsId: 'GIT_CREAD'
+
             }
         }
 
