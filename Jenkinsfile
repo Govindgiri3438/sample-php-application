@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
 	    	steps {
 			echo 'Starting deployment...'
-			sshagent (credentials: ['my-jenkins-ssh']) {
+			sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
 			sh '''
 			whoami
 			hostname
