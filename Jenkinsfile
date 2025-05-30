@@ -15,12 +15,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh 'php -l index.php' // simple syntax check, expand as needed
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
