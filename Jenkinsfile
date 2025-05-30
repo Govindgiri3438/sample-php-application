@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git url: 'https://github.com/Govindgiri3438/sample-php-application.git', branch: 'main'
-                credentialsId: 'git_cread'
+                #credentialsId: 'git_cread'
             }
         }
 
