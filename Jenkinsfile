@@ -22,9 +22,9 @@ pipeline {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
                     sh """
                     ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST '
-                        rm -rf $DEPLOY_PATH/*
+                        sudo rm -rf $DEPLOY_PATH/*
                     '
-                    scp -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+                    sudo scp -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
                     """
                 }
             }
