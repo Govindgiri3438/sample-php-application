@@ -23,8 +23,8 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST '
                         sudo rm -rf $DEPLOY_PATH/*
+                        scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
                     '
-                     scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
                     """
                 }
             }
