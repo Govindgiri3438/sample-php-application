@@ -15,19 +15,22 @@ pipeline {
 
             }
         }
+        
 
         stage('Deploy') {
-            steps {
-                sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST '
-                        rm -rf $DEPLOY_PATH/*
-                    '
-                    scp -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-                    """
-                }
-            }
+			steps {
+				echo 'Starting deployment...'
+				sshagent (credentials: ['my-jenkins-ssh']) {
+				sh '''
+				whoami
+				hostname
+				echo "Trying SSH..."
+				ssh -o StrictHostKeyChecking=no ubuntu@3.6.36.20 "echo Connected"
+				'''
         }
+    }
+}
+
     }
 
     post {
