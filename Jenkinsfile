@@ -18,18 +18,18 @@ pipeline {
         
 
         stage('Deploy') {
-			steps {
-				echo 'Starting deployment...'
-				sshagent (credentials: ['my-jenkins-ssh']) {
-				sh '''
-				whoami
-				hostname
-				echo "Trying SSH..."
-				ssh -o StrictHostKeyChecking=no ubuntu@3.6.36.20 "echo Connected"
-				'''
-        }
-    }
-}
+	    	steps {
+			echo 'Starting deployment...'
+			sshagent (credentials: ['my-jenkins-ssh']) {
+			sh '''
+			whoami
+			hostname
+			echo "Trying SSH..."
+			ssh -o StrictHostKeyChecking=no ubuntu@3.6.36.20 "echo Connected"
+			'''
+        		}
+   		 }
+	}
 
     }
 
