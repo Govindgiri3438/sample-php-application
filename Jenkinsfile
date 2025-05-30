@@ -5,7 +5,7 @@ pipeline {
         DEPLOY_USER = 'ubuntu' // or another SSH user
         DEPLOY_HOST = '3.6.36.20'
         DEPLOY_PATH = '/var/www/html/'
-        SSH_CREDENTIALS_ID = 'my-jenkins-ssh'
+        SSH_CREDENTIALS_ID = 'my-ec2-cred'
     }
 
     stages {
